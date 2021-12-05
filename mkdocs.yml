@@ -1,0 +1,17 @@
+site_name: food_ordering
+site_description: A small app with capabilities ordering food and listing them
+repo_url: https://github.com/muhammet-mucahit/food-ordering
+site_dir: site
+copyright: Copyright &copy; 2021, <a href="https://github.com/muhammet-mucahit">muhammet-mucahit</a>.
+dev_addr: 0.0.0.0:8001
+
+theme:
+  name: readthedocs
+
+nav:
+  - Home: 'index.md'
+  - Architecture: 'architecture.md'
+  - API:
+      - Authentication: 'api/authentication.md'
+      - Users: 'api/users.md'
+      - Orders: 'api/orders.md'

@@ -1,0 +1,11 @@
+[report]
+fail_under = 100
+show_missing = True
+omit = *migrations*,
+       *urls*,
+       *test*,
+       *admin*,
+       ./manage.py,
+       ./food_ordering/config/*,
+       ./food_ordering/wsgi.py,
+       *__init__*
