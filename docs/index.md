@@ -1,6 +1,6 @@
 # food-ordering
 
-[![Build Status](https://travis-ci.org/muhammet_mucahit/food-ordering.svg?branch=master)](https://travis-ci.org/muhammet_mucahit/food-ordering)
+[![Build Status](https://app.travis-ci.com/muhammet-mucahit/food-ordering.svg?token=FgnaWCUqPkVsFzPtxu7W&branch=master)](https://app.travis-ci.com/muhammet-mucahit/food-ordering)
 
 A small app with capabilities ordering food and listing them.
 
