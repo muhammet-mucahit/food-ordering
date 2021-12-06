@@ -123,3 +123,25 @@ class UserDetailAdminViewSetTestCase(APITestCase):
         response = self.client.get(self.url)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         self.assertEquals(self.user.email, response.data["email"])
+
+
+class UserListAdminViewSetTestCase(APITestCase):
+    """
+    Tests /users list operations.
+    """
+
+    def setUp(self):
+        self.user = UserFactory.create()
+        self.admin_user = UserFactory.create(is_staff=True)
+        self.url = reverse("users:list")
+
+    def test_that_requires_admin_privilege(self):
+        self.client.force_authenticate(self.user)
+        response = self.client.get(self.url)
+        self.assertEquals(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_post_request_with_no_data_fails(self):
+        self.client.force_authenticate(self.admin_user)
+        response = self.client.get(self.url)
+        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEquals(User.objects.count(), response.data["count"])

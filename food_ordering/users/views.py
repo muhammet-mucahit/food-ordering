@@ -25,6 +25,16 @@ class UserCreateViewSet(generics.CreateAPIView):
     permission_classes = (AllowAny,)
 
 
+class UsersListAdminViewSet(generics.ListAPIView):
+    """
+    List all users in the system, requires Admin privilege
+    """
+    queryset = User.objects.all()
+    permission_classes = (permissions.IsAdminUser,)
+    authentication_classes = (authentication.TokenAuthentication,)
+    serializer_class = UserSerializer
+
+
 class UserDetailAdminViewSet(generics.RetrieveAPIView):
     """
     Retrieve any user in the system, requires Admin privilege
