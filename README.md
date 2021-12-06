@@ -34,6 +34,14 @@ Initialize database with example data:
 docker-compose run --rm web ./manage.py initialize_data
 ```
 
+# Accessing App
+
+After initializing the project, you access;
+
+The **app** through **_0:8000_**
+
+The **documentation** through **_0:8001_**
+
 # See Code Style
 
 See code coverage report:
