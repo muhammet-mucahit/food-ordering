@@ -1,5 +1,7 @@
-from rest_framework import generics
+from rest_framework import generics, authentication, permissions
 from rest_framework.permissions import AllowAny
+
+from food_ordering.users.models import User
 from food_ordering.users.serializers import UserSerializer, CreateUserSerializer
 
 
@@ -21,3 +23,14 @@ class UserCreateViewSet(generics.CreateAPIView):
 
     serializer_class = CreateUserSerializer
     permission_classes = (AllowAny,)
+
+
+class UserDetailAdminViewSet(generics.RetrieveAPIView):
+    """
+    Retrieve any user in the system, requires Admin privilege
+    """
+    queryset = User.objects.all()
+    lookup_field = "id"
+    permission_classes = (permissions.IsAdminUser,)
+    authentication_classes = (authentication.TokenAuthentication,)
+    serializer_class = UserSerializer

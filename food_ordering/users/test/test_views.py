@@ -101,3 +101,25 @@ class ManageUserViewSetTestCase(APITestCase):
     def test_post_method_not_available(self):
         response = self.client.post(self.url, {})
         self.assertEquals(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+class UserDetailAdminViewSetTestCase(APITestCase):
+    """
+    Tests /users/<uuid:id> retrieve operations.
+    """
+
+    def setUp(self):
+        self.user = UserFactory.create()
+        self.admin_user = UserFactory.create(is_staff=True)
+        self.url = reverse("users:retrieve", args=(self.user.id,))
+
+    def test_that_requires_admin_privilege(self):
+        self.client.force_authenticate(self.user)
+        response = self.client.get(self.url)
+        self.assertEquals(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_post_request_with_no_data_fails(self):
+        self.client.force_authenticate(self.admin_user)
+        response = self.client.get(self.url)
+        self.assertEquals(response.status_code, status.HTTP_200_OK)
+        self.assertEquals(self.user.email, response.data["email"])
