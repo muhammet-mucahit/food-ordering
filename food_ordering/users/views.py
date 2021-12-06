@@ -29,7 +29,7 @@ class UsersListAdminViewSet(generics.ListAPIView):
     """
     List all users in the system, requires Admin privilege
     """
-    queryset = User.objects.all()
+    queryset = User.objects.order_by("-date_joined")
     permission_classes = (permissions.IsAdminUser,)
     authentication_classes = (authentication.TokenAuthentication,)
     serializer_class = UserSerializer

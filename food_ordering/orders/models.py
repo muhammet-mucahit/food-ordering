@@ -1,5 +1,7 @@
 import uuid
 
+from django.conf import settings
+from django.core.mail import EmailMessage
 from django.db import models
 from django.utils.functional import cached_property
 
@@ -12,6 +14,7 @@ class Order(BaseModel):
     class OrderStatus(models.TextChoices):
         CREATED = "CREATED"
         WAITING = "WAITING"
+        ACCEPTED = "ACCEPTED"
         COMPLETED = "COMPLETED"
         REJECTED = "REJECTED"
 
@@ -23,6 +26,17 @@ class Order(BaseModel):
     @cached_property
     def total_price(self):
         return sum(order_food.price for order_food in self.orderfood_set.all())
+
+    def notify_about_accepted_order(self):
+        email_subject = "Order"
+        email_body = f"Order Accepted: {self.user.__dict__}"
+        email = EmailMessage(
+            subject=email_subject,
+            body=email_body,
+            from_email=settings.EMAIL_HOST_USER,
+            to=[self.user.email],
+        )
+        email.send()
 
 
 class OrderFood(BaseModel):

@@ -9,3 +9,4 @@ INSTALLED_APPS += ("django_extensions",)
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST_USER = "info@example.com"

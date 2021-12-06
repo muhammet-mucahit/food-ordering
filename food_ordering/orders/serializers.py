@@ -3,6 +3,12 @@ from rest_framework import serializers
 from food_ordering.orders.models import Order, OrderFood
 
 
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = "__all__"
+
+
 class OrderFoodCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderFood

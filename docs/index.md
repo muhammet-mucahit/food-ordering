@@ -8,6 +8,12 @@ A small app with capabilities ordering food and listing them.
 
 - [Docker](https://docs.docker.com/get-docker/)
 
+# Run Tests
+
+```bash
+docker-compose run --rm web ./manage.py test
+```
+
 # Initialize the project
 
 Start the dev server for local development:

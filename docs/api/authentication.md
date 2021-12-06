@@ -16,24 +16,3 @@ The curl command line tool may be useful for testing token authenticated APIs. F
 ```bash
 curl -X GET http://127.0.0.1:8000/api/v1/example/ -H 'Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b'
 ```
-
-## Retrieving Tokens
-Authorization tokens are issued and returned when a user registers. A registered user can also retrieve their token with the following request:
-
-**Request**:
-
-`POST` `api/v1/users/obtain_token/`
-
-Parameters:
-
-Name | Type | Description
----|---|---
-email | string | The user's email
-password | string | The user's password
-
-**Response**:
-```json
-{ 
-    "token" : "9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b" 
-}
-```
