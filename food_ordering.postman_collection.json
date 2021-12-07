@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "d56748cb-7375-4d4f-a584-1bd2de56e6dc",
+		"name": "Food Ordering App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Me",
+					"item": [
+						{
+							"name": "Get Me",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_host}}/api/v1/users/me/",
+									"host": [
+										"{{api_host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"me",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Me",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Mucahit\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_host}}/api/v1/users/me/",
+									"host": [
+										"{{api_host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"me",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Partial Update Me",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Mucahit\",\n    \"last_name\": \"Aktepe\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api_host}}/api/v1/users/me/",
+									"host": [
+										"{{api_host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"me",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin Only",
+					"item": [
+						{
+							"name": "List Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_host}}/api/v1/users/list/",
+									"host": [
+										"{{api_host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"list",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Retrieve User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_host}}/api/v1/users/dcb8c90c-58f8-4d79-833a-8d60b9ff919f/",
+									"host": [
+										"{{api_host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"dcb8c90c-58f8-4d79-833a-8d60b9ff919f",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"as@gmail.com\",\n    \"password\": \"root1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_host}}/api/v1/users/",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Admin Only",
+					"item": [
+						{
+							"name": "Get Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{api_host}}/api/v1/orders/list/?status=ACCEPTED",
+									"host": [
+										"{{api_host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"list",
+										""
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "ACCEPTED"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Process Orders",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{api_host}}/api/v1/orders/process/",
+									"host": [
+										"{{api_host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"process",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"restaurant\": 3,\n    \"orderfood_set\": [\n        {\n            \"food\": 9,\n            \"quantity\": 3\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_host}}/api/v1/orders/",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "Token {{api_token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_host",
+			"value": "0.0.0.0:8000"
+		},
+		{
+			"key": "api_token",
+			"value": "f82a5c13b18103b0ddca8543359996fab32792ef"
+		}
+	]
+}
